@@ -29,7 +29,14 @@ void QuickSort(T *A[], int start, int end, int& cnt, bool compare (const T& a, c
 }
 
 template<typename T>
-int Partition(T *A[], int start, int end, int& cnt, bool compare (const T& a, const T& b) ) { // function compare as a parameter !!
+int Partition(T *A[], int start, int end, int& cnt, bool compare (const T& a, const T& b) )
+{ // function compare as a parameter !// !
+    // Generate a random number in between
+    // start - end
+    srand(time(NULL));
+    int random = (start-1) + rand() % ( (end-1) - (start-1));
+    // Swap A[random] with A[high]
+    swap(A[random], A[end-1]);
     T* pivot = A[end - 1];
     int pindex = start - 1;
     for (int i = start; i < end - 1; i++) {
@@ -39,7 +46,7 @@ int Partition(T *A[], int start, int end, int& cnt, bool compare (const T& a, co
             cnt++;
         }
     }
-    std::swap(A[pindex + 1], A[end - 1]);
+    swap(A[pindex + 1], A[end - 1]);
     return pindex + 1;
 }
 
