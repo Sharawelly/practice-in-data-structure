@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 #define ll long long
 
 using namespace std;
@@ -195,6 +195,32 @@ public:
         temp->next->prev = temp->prev;
         delete delptr;
     }
+    T retrive_at(ll index){
+        ll cur=0;
+        Node<T>*temp=Head;
+        if(index<=0){return temp->data;}
+        while(temp->next !=NULL && cur<index){
+            temp= temp->next;
+            cur++;
+        }
+        return temp->data;
+    }
+
+    void replace_at(T newdata,ll index){
+        ll cur=0;
+        Node<T>*temp=Head;
+        while(temp->next!=NULL&& cur<index){
+            cur++;
+            temp=temp->next;
+        }
+        temp->data=newdata;
+
+    }
+    void swap(T first_ele_index,T second_ele_index){
+        
+
+
+    }
 };
 
 int main() {
@@ -203,13 +229,17 @@ int main() {
 
     // Appending elements to the list
     myList.append_at_tail(10);
+    myList.replace_at(333,0);
+    // Printing the list
+    cout << "List after appending elements: ";
+    myList.print();
     myList.append_at_tail(20);
     myList.append_at_tail(30);
     myList.append_at_tail(30);
     myList.append_at_tail(30);
     myList.append_at_tail(30);
     myList.remove_at_index(5);
-
+    myList.replace_at(333,0);
     // Printing the list
     cout << "List after appending elements: ";
     myList.print(); // Output: 10 20 30
